@@ -6,24 +6,18 @@ Dueño y CEO del restaurante. Como propietario es el encargado de tomar decision
 Un empleado del restaurante. Encargado de atender de forma a las mesas, servir la comida hecha por el [cocinero](#P3) y del trato con los [clientes](#P4).
 
 ## [P3] <a name="P3">Cocinero</a>
-Empleado del restaurante encargado de hacer las comidas que piden los [clientes](#P4).
-
-## [P4] <a name="P4">Cliente</a>
-Consumidor que haya pasado por el restaurante. Se encarga de registrar una opinión nueva en el sistema.
+Empleado del restaurante encargado de hacer las comidas que piden los clientes.
 
 ---
 
 # Historias de Usuario
-* **[HU1](https://github.com/JAntonioVR/IV-2021-2022/issues/2)**: Como [propietario](#P1), quiero saber la opinión que tiene mi clientela sobre algún camarero concreto en un rango de fechas determinado.
-* **[HU2](https://github.com/JAntonioVR/IV-2021-2022/issues/3)**: Como [propietario](#P1), quiero saber la opinión que tiene mi clientela sobre la comida que servimos en un rango de fechas determinado.
-* **[HU3](https://github.com/JAntonioVR/IV-2021-2022/issues/4)**: Como [propietario](#P1), quiero conocer qué debo conservar y qué debo cambiar para incrementar mi beneficio.
-* **[HU4](https://github.com/JAntonioVR/IV-2021-2022/issues/5)**: Como [camarero](#P2), quiero conocer la opinión que tiene la clientela sobre mí en un rango de fechas determinado.
-* **[HU5](https://github.com/JAntonioVR/IV-2021-2022/issues/6)**: Como [cocinero](#P3), quiero conocer la opinión que tiene la clientela sobre mi cocina en un rango de fechas determinado.
-* **[HU6](https://github.com/JAntonioVR/IV-2021-2022/issues/7)**: Como [cliente](#P4), quiero registrar mi opinión sobre el servicio recién prestado.
+* **[HU1](https://github.com/JAntonioVR/IV-2021-2022/issues/4)**: Como [propietario](#P1), quiero conocer qué aspectos de mi negocio debo conservar y cambiar para maximizar mi beneficio en base a las opiniones de mis clientes.
+* **[HU2](https://github.com/JAntonioVR/IV-2021-2022/issues/5)**: Como [camarero](#P2), quiero conocer qué debo conservar y qué mejorar en mis servicios a mesas en base a las opiniones que tengan los clientes de mí para así dar buena imagen del negocio de cara al público.
+* **[HU3](https://github.com/JAntonioVR/IV-2021-2022/issues/6)**: Como [cocinero](#P3), quiero conocer qué aspectos de mi cocina debo conservar o cambiar en base a las opiniones de los clientes sobre la comida del restaurante que yo preparo para saber cuándo adoptar nuevas técnicas o variar el menú. 
 
 ---
 
-# Hitos a alcanzar (Milestones)
+# Milestones
 
 * **[[M1] Software dedicado al cliente](https://github.com/JAntonioVR/IV-2021-2022/milestone/1)**: Lo más indispensable es la posibilidad de que el cliente registre su opinión, para posteriormente hacer cálculos con dichas opiniones.
 * **[[M2] Software dedicado al propietario](https://github.com/JAntonioVR/IV-2021-2022/milestone/2)**: Se desarrollará el software que procesará la información y le mostrará los resultados al propietario.
