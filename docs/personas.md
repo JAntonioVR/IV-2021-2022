@@ -17,7 +17,6 @@ Representa una entidad que aprovecha la información que ofrezca nuestra platafo
 # Milestones
 
 * **[[M0] Elaboración y diseño de estructuras de datos](https://github.com/JAntonioVR/IV-2021-2022/milestone/5)**: Se modelará y diseñará un programa sencillo con las distintas clases y estructuras de datos necesarias para el posterior desarrollo del software.
-* **[[M1] Procesamiento del lenguaje natural](https://github.com/JAntonioVR/IV-2021-2022/milestone/6)**: Se desarrollará una plataforma web que a partir de las reseñas de los clientes extrae las palabras significativas y modela la reseña.
-* **[[M2] Extracción de aspectos positivos o negativos](https://github.com/JAntonioVR/IV-2021-2022/milestone/7)**: A partir del modelado de la reseña se exponen los aspectos positivos y negativos del restaurante.
-* **[[M3] Elaboración de estrategias](https://github.com/JAntonioVR/IV-2021-2022/milestone/8)**: A partir de estos aspectos positivos y negativos se procesarán y elaborarán estrategias cuyo objetivo es mejorar el funcionamiento del restaurante que la utilice.
-* **[[M4] Despliegue](https://github.com/JAntonioVR/IV-2021-2022/milestone/9)**: Una vez desarrollado el software, se desplegará en la nube para su uso por parte de cualquier usuario.
+* **[[M1] Procesamiento del lenguaje natural](https://github.com/JAntonioVR/IV-2021-2022/milestone/6)**: [M1] Procesamiento del lenguaje natural
+* **[[M2] Elaboración de estrategias](https://github.com/JAntonioVR/IV-2021-2022/milestone/8)**: Software que sugiere estrategias y decisiones a partir de las palabras más repetidas en las reseñas.
+* **[[M3] Despliegue](https://github.com/JAntonioVR/IV-2021-2022/milestone/9)**: Una vez desarrollado el software, se desplegará en la nube para su uso por parte de cualquier usuario.
