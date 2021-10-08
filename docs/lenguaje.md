@@ -1,6 +1,7 @@
 # Lenguaje de programación
 
 > Documentación adicional del Objetivo 2
+> 
 > Por: Mapachana
 
 El lenguaje elegido para el proyecto ha sido Python, en concreto, se ha usado la versión 3.8 del mismo para comenzar su desarrollo.
