@@ -7,4 +7,9 @@ import resenia
 
 @dataclass
 class ConjuntoResenias:
-    pass
+
+    resenias: List[resenia.Resenia]
+
+    # Método que devuelve todas las reseñas de un local dado
+    def buscar_resenias_por_local(self, local):
+        pass
