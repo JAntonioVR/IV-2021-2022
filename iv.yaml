@@ -1,4 +1,4 @@
-lenguaje: python 3.8
+lenguaje: python
 entidad: src/resenia.py
 entidad: src/conjunto_resenias.py
 entidad: src/aspectos.py
