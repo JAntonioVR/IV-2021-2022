@@ -8,7 +8,7 @@ class Resenia:
 
     texto: str
     local: str
-    puntuacion:int
+    puntuacion: int
     palabras_clave: List[str] = field(default_factory=lambda: [])
 
 
