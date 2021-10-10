@@ -7,7 +7,7 @@ from typing import List
 class Resenia:
 
     texto: str
-    local: str
+    local: str     # cadena única para referenciar a un local
     puntuacion: int
     palabras_clave: List[str] = field(default_factory=list)
 
@@ -15,4 +15,3 @@ class Resenia:
     # Método para extraer las palabras clave de la reseña con las que se va a trabajar
     def extraer_palabras_clave(self):
         pass
-    
