@@ -7,7 +7,7 @@ from typing import List
 class Resenia:
 
     texto: str
-    local: str     # cadena única para referenciar a un local
+    local_id: str     # cadena única para referenciar a un local
     puntuacion: int
     palabras_clave: List[str] = field(default_factory=list)
 
