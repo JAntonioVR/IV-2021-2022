@@ -10,8 +10,8 @@ class Aspectos:
 
     resenias: List[resenia.Resenia]
     local: str
-    aspectos_positivos: List[str] = field(default_factory=lambda: [])
-    aspectos_negativos: List[str] = field(default_factory=lambda: [])
+    aspectos_positivos: List[str] = field(default_factory=list)
+    aspectos_negativos: List[str] = field(default_factory=list)
 
     # Método para extraer los aspectos positivos
     def extraer_aspectos_positivos(self):
@@ -20,3 +20,4 @@ class Aspectos:
     # Método para extraer los aspectos negativos
     def extraer_aspectos_negativos(self):
         pass
+
