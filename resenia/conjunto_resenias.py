@@ -1,4 +1,4 @@
-# Fichero de la clase ConjuntoResenias, que modela y controla el conjunto de todas las reseñas
+# Fichero de la clase ConjuntoResenias, clase que modela y controla el conjunto de todas las reseñas
 
 from dataclasses import dataclass
 from typing import List
@@ -13,3 +13,4 @@ class ConjuntoResenias:
     # Método que devuelve todas las reseñas de un local dado
     def buscar_resenias_por_local(self, local):
         pass
+

@@ -1,4 +1,4 @@
-# Fichero de la clase Resenia, que modeliza una Reseña
+# Fichero de la clase Resenia, clase que modeliza una Reseña
 
 from dataclasses import dataclass, field
 from typing import List
@@ -15,3 +15,4 @@ class Resenia:
     # Método para extraer las palabras clave de la reseña con las que se va a trabajar
     def extraer_palabras_clave(self):
         pass
+

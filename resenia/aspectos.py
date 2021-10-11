@@ -1,4 +1,4 @@
-# Fichero de la clase Aspectos, que encuentra y modela los aspectos positivos y negativos de un local en base a sus reseñas
+# Fichero de la clase Aspectos, clase que encuentra y modela los aspectos positivos y negativos de un local en base a sus reseñas
 
 import resenia
 
@@ -18,4 +18,5 @@ class Aspectos:
     # Método para extraer los aspectos negativos
     def extraer_aspectos_negativos(self):
         pass
+
 
