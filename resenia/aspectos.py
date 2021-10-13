@@ -2,6 +2,7 @@
 
 import resenia
 
+
 class Aspectos:
     '''Clase para analizar un conjunto de reseñas y extraer sus aspectos positivos y negativos.
     
@@ -11,6 +12,7 @@ class Aspectos:
     aspectos_positivos (Array[string]): Lista de los aspectos positivos del local.
     aspectos_negativos (Array[string]): Lista de los aspectos negativos del local.
     '''
+
 
     def __init__(self, resenias, local):
         '''Inicializador de la clase.
