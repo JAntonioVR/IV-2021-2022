@@ -9,3 +9,5 @@ Utilizando las reseñas que los clientes interesados dejen con puntuación gené
 
 ## Historias de usuario
 En [este documento](./docs/personas.md) se describen los distintos usuarios potenciales, sus historias de usuario y los PMV.
+
+En [este documento](./docs/lenguaje.md) se encuentra el lenguaje elegido y la justificación de dicha elección.
