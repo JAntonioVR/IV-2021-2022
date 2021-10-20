@@ -1,9 +1,25 @@
+#
+# ──────────────────────────────────────────────────────────────
+#   :::::: test.py : :  :   :    :     :        :          :
+# ──────────────────────────────────────────────────────────────
+#
+
+# ─── PROJECT: IV-2021-2022 (https://github.com/JAntonioVR/IV-2021-2022) ─────────
+# ─── OWNER: @JAntonioVR ─────────────────────────────────────────────────────────
+# ─── AUTHOR: @JAntonioVR ────────────────────────────────────────────────────────
+# ─── DATE: 20-10-2021 ───────────────────────────────────────────────────────────
+# ─── VERSION: 1.0 ───────────────────────────────────────────────────────────────
+
+# Importamos invoke
 from invoke import task
 
+# Importamos el fichero de test que se encuentra en la carpeta 'test'
 import sys
 sys.path.append('./test')
 import test_hello_world
 
+
+# ─── INSTALACIÓN DE TODAS LAS DEPENDENCIAS ──────────────────────────────────────
 @task
 def install(c):
     '''
@@ -16,6 +32,8 @@ def install(c):
     else:
         print("Ha ocurrido algún error en la instalación.")
 
+
+# ─── INSTALACIÓN DE DEPENDENCIAS QUE NO SON DE DESARROLLADOR ────────────────────
 @task
 def install_no_dev(c):
     '''
@@ -28,6 +46,8 @@ def install_no_dev(c):
     else:
         print("Ha ocurrido algún error en la instalación.")
 
+
+# ─── AÑADIR DEPENDENCIA ─────────────────────────────────────────────────────────
 @task(help={'package': "Paquete que se desea añadir como dependencia",
             'dev':     "True si se desea añadir la dependencia como de desarrollador, False en otro caso"})
 def add_dependency(c, package, dev=False):
@@ -45,6 +65,8 @@ def add_dependency(c, package, dev=False):
     else:
         print("Ha ocurrido algún error al añadir la dependencia")
 
+
+# ─── EJECUTAR TESTS ─────────────────────────────────────────────────────────────
 @task
 def test(c):
     '''
@@ -53,3 +75,4 @@ def test(c):
     print("Ejecutando test...")
     test_hello_world.hello_world()
     
+# ────────────────────────────────────────────────────────────────────────────────
