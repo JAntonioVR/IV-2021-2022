@@ -1,2 +1,5 @@
 lenguaje: python
 entidad: resenia/resenia.py
+automatizar:
+	fichero: task.py
+	orden: invoke <task>
