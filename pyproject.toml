@@ -6,11 +6,11 @@ authors = ["JAntonioVR"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-pyflakes = "^2.4.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.2"
 invoke = "^1.6.0"
+pyflakes = "^2.4.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

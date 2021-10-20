@@ -23,6 +23,7 @@ $ invoke --list
 Available tasks:
 
   add-dependency   Añade una nueva dependencia al fichero 'pyproject.toml'
+  check            Comprueba la sintaxis de los ficheros de código
   install          Instala todas las dependencias
   install-no-dev   Instala las dependencias que NO son de desarrollador
   test             Lanza a ejecutar los test
@@ -31,6 +32,7 @@ Available tasks:
 Más en profundidad:
 
 * `invoke [--dev] [--package=STRING]`: Se añade, mediante poetry, una dependencia al fichero `pyproject.toml`, especificada por la opción `--package`. Si se indica la opción `--dev` (o `-d`) se añadirá a las dependencias de desarrollador.
+* `invoke check`: Utilizando `pyflakes`, comprueba la sintaxis de los ficheros de código y de las entidades programadas hasta el momento.
 * `invoke install`: Instala todas las dependencias, sean o no de desarrollador.
 * `invoke install-no-dev`: Instala solo las dependencias que **no** sean de desarrollador.
 * `invoke test`: Ejecuta las funciones test que haya en el directorio `test`, aunque de momento sólo hay una que únicamente imprime el mensaje `Hello World!`, posteriormente se desarrollarás más test.
