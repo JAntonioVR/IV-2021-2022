@@ -18,8 +18,6 @@ import sys
 sys.path.append('./test')
 import test_hello_world
 
-import os
-
 
 # ─── INSTALACIÓN DE TODAS LAS DEPENDENCIAS ──────────────────────────────────────
 @task
@@ -85,6 +83,11 @@ def check(c):
     Comprueba la sintaxis de los ficheros de código
     '''
     module = "resenia"
-    c.run("pyflakes " + module)
+    print("Comprobando sintaxis...")
+    if(c.run("py3compile " + module)):
+        print("OK")
+    
+            
+        
     
 # ────────────────────────────────────────────────────────────────────────────────
