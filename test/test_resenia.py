@@ -17,4 +17,3 @@ for index, row in dataset.iterrows():
 
 
 review_set = conjunto_resenias.ConjuntoResenias(list_reviews)
-
