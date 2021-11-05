@@ -4,6 +4,8 @@ from dataclasses import dataclass
 from typing import List
 
 import resenia
+import csv
+import os
 
 @dataclass
 class ConjuntoResenias:
@@ -22,4 +24,24 @@ class ConjuntoResenias:
         Argumentos:
         arg1 (string): Local del que se quieren buscar reseñas.
         '''
-        pass
+        result = []
+        for resenia in self.resenias:
+            if(resenia.local_id == local):
+                result.append(result)
+        return result
+
+    def buscar_resenia_por_indice(self, index):
+        return self.resenias[index]
+
+    def carga_datos(self, dataset):
+        self.resenias = []
+        with open(dataset) as csvfile:
+            spamreader = csv.reader(csvfile, delimiter='\t')
+            for row in spamreader:
+                current_review = resenia.Resenia(row[0], row[3], row[2], None)
+                self.resenias.append(current_review)
+
+        self.resenias.pop(0) # La primera reseña eran los nombres de las columnas
+
+    def numero_resenias(self):
+        return len(self.resenias)
