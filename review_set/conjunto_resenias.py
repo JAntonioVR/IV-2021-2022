@@ -37,11 +37,11 @@ class ConjuntoResenias:
         self.resenias = []
         with open(dataset) as csvfile:
             spamreader = csv.reader(csvfile, delimiter='\t')
+            next(spamreader)        # La primera línea son los nombres de las columnas
             for row in spamreader:
-                current_review = resenia.Resenia(row[0], row[3], row[2], None)
+                current_review = resenia.Resenia(row[0], row[3], int(row[2]), None)
                 self.resenias.append(current_review)
 
-        self.resenias.pop(0) # La primera reseña eran los nombres de las columnas
 
     def numero_resenias(self):
         return len(self.resenias)
