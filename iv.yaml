@@ -1,5 +1,6 @@
 lenguaje: python
-entidad: resenia/resenia.py
+entidad: review_set/resenia.py
 automatizar:
     fichero: task.py
     orden: invoke
+test: test/test_resenias.py
