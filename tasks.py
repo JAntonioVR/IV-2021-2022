@@ -16,8 +16,10 @@ from invoke import task
 # Importamos el fichero de test que se encuentra en la carpeta 'test'
 import sys
 sys.path.append('./test')
-import test_hello_world
+from test_resenia import test_constructor_conjunto_resenias, test_dataset_name, test_carga_datos, test_conjunto_resenias, test_buscar_resenias_por_local
 
+sys.path.append('./review_set')
+from conjunto_resenias import ConjuntoResenias
 
 # ─── INSTALACIÓN DE TODAS LAS DEPENDENCIAS ──────────────────────────────────────
 @task
@@ -72,8 +74,36 @@ def test(c):
     '''
     Lanza a ejecutar los test
     '''
-    print("Ejecutando test...")
-    test_hello_world.hello_world()
+    print("─── EJECUTANDO TEST ────────────────────────────────────────────────────────────")
+    print("Ejecutando test de constructor de ConjuntoResenias...")
+    test_constructor_conjunto_resenias()
+    print("OK")
+
+    dataset = "./data/Restaurant_Reviews.tsv"
+
+    print("Ejecutando test de comprobación de existencia del dataset Restaurant_Reviews.tsv...")
+    test_dataset_name(dataset)
+    print("OK")
+
+    print("Ejecutando test de carga de datos...")
+    test_carga_datos(dataset)
+    print("OK")
+
+    conjunto_resenias = ConjuntoResenias(None)
+    conjunto_resenias.carga_datos(dataset)
+
+    print("Ejecutando test de integridad del conjunto de reseñas...")
+    test_conjunto_resenias(conjunto_resenias)
+    print("OK")
+
+    print("Ejecutando test de búsqueda por local...")
+    test_buscar_resenias_por_local(conjunto_resenias, "The Food Kingdom")
+    print("OK")
+
+    print("─── TODOS LOS TEST HAN SIDO SUPERADOS ──────────────────────────────────────────") 
+
+
+
 
 
 # ─── COMPROBAR SINTAXIS ─────────────────────────────────────────────────────────
