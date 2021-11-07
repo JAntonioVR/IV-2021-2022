@@ -1,20 +1,25 @@
-from review_set.resenia import Resenia
-from review_set.conjunto_resenias import ConjuntoResenias
+# from review_set.resenia import Resenia
+# from review_set.conjunto_resenias import ConjuntoResenias
 import os
+
+import sys
+sys.path.append('./review_set')
+from resenia import Resenia
+from conjunto_resenias import ConjuntoResenias
 
 def test_constructor_conjunto_resenias():
     review_set = ConjuntoResenias(None)
     assert(review_set != None)
 
-def test_dataset_name(dataset):
+def test_dataset_name(dataset: str):
     assert(os.path.isfile(dataset))
 
-def test_carga_datos(dataset):
+def test_carga_datos(dataset: str):
     review_set = ConjuntoResenias(None)
     review_set.carga_datos(dataset)
     assert(review_set.numero_resenias() >= 0)
 
-def test_instancias_conjunto(conjunto_resenias):
+def test_instancias_conjunto(conjunto_resenias: ConjuntoResenias):
     res = True
     for i in range(conjunto_resenias.numero_resenias()):
         review = conjunto_resenias.buscar_resenia_por_indice(i)
@@ -33,7 +38,14 @@ def test_local_id_resenia(r: Resenia):
     local_id = r.local_id
     assert(isinstance(local_id, str) and len(local_id) > 0)
 
+def test_resenia(r: Resenia):
+    test_texto_resenia(r)
+    test_puntuacion_resenia(r)
+    test_local_id_resenia(r)
 
-    
+def test_conjunto_resenias(conjunto_resenias: ConjuntoResenias):
+    for i in range(conjunto_resenias.numero_resenias()):
+        review = conjunto_resenias.buscar_resenia_por_indice(i)
+        test_resenia(review)
 
 
