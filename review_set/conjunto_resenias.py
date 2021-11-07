@@ -18,7 +18,7 @@ class ConjuntoResenias:
     resenias: List[resenia.Resenia]
 
 
-    def buscar_resenias_por_local(self, local):
+    def buscar_resenias_por_local(self, local_id : str):
         ''' Método que devuelve todas las reseñas de un local dado.
         
         Argumentos:
@@ -26,14 +26,14 @@ class ConjuntoResenias:
         '''
         result = []
         for resenia in self.resenias:
-            if(resenia.local_id == local):
-                result.append(result)
-        return result
+            if(resenia.local_id == local_id):
+                result.append(resenia)
+        return ConjuntoResenias(result)
 
-    def buscar_resenia_por_indice(self, index):
+    def buscar_resenia_por_indice(self, index: int):
         return self.resenias[index]
 
-    def carga_datos(self, dataset):
+    def carga_datos(self, dataset: str):
         self.resenias = []
         with open(dataset) as csvfile:
             spamreader = csv.reader(csvfile, delimiter='\t')
