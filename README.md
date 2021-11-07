@@ -35,6 +35,10 @@ Más en profundidad:
 * `invoke check`: Utilizando `py3compile`, comprueba la sintaxis de los ficheros de código y de las entidades programadas hasta el momento.
 * `invoke install`: Instala todas las dependencias, sean o no de desarrollador.
 * `invoke install-no-dev`: Instala solo las dependencias que **no** sean de desarrollador.
-* `invoke test`: Ejecuta las funciones test que haya en el directorio `test`, aunque de momento sólo hay una que únicamente imprime el mensaje `Hello World!`, posteriormente se desarrollarás más test.
+* `invoke test`: Ejecuta los test desarrollados hasta el momento.
 
 Para una información más concisa sobre alguna tarea concreta ejecutar `inv[oke] --help <task>` 
+
+### Test
+
+En el fichero `test/test_resenia.py` podemos encontrar las funciones implementadas como test. El objetivo es testear las clases `Resenia` y `ConjuntoResenias` junto con sus métodos. Estas dos clases están íntimamente relacionadas por composición, por lo que para el testeo de `ConjuntoResenias` es necesario también el testeo de `Resenia`. En el futuro, estas clases almacenarán la lógica para extraer los aspectos positivos y negativos del restaurante. En particular, `Resenia` contendrá los datos de una reseña junto con sus palabras clave. En esta fase del proyecto aún no se ha implementado la lógica necesaria para extraer palabras clave, por lo que simplemente testeamos el resto de atributos. Por su parte, `ConjuntoResenias` almacena reseñas y realiza algunas tareas de consulta, algunas de ellas ya implementadas y testeadas.
