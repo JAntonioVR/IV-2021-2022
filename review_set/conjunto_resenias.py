@@ -31,12 +31,25 @@ class ConjuntoResenias:
         return ConjuntoResenias(result)
 
     def buscar_resenia_por_indice(self, index: int):
+        ''' Método que devuelve la reseña que ocupa el lugar 'index'
+        en la lista de reseñas
+
+        Argumentos:
+        arg1 (int): Índice de la reseña que se busca
+        '''
         return self.resenias[index]
 
     def carga_datos(self, dataset: str):
+        '''Método que carga en el atributo 'resenias' una lista de objetos
+        de la clase 'Resenia' a partir de un fichero de texto.
+
+        Argumentos:
+        arg1 (string): Ruta del fichero del cual se leerán los datos
+        '''
         self.resenias = []
         with open(dataset) as csvfile:
             spamreader = csv.reader(csvfile, delimiter='\t')
+            assert(spamreader != None)
             next(spamreader)        # La primera línea son los nombres de las columnas
             for row in spamreader:
                 current_review = resenia.Resenia(row[0], row[3], int(row[2]), None)
@@ -44,4 +57,6 @@ class ConjuntoResenias:
 
 
     def numero_resenias(self):
+        '''Método que devuelve el número de reseñas del conjunto
+        '''
         return len(self.resenias)
