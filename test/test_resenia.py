@@ -1,5 +1,3 @@
-# from review_set.resenia import Resenia
-# from review_set.conjunto_resenias import ConjuntoResenias
 import os
 
 import sys
