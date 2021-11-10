@@ -17,6 +17,25 @@ class ConjuntoResenias:
 
     resenias: List[resenia.Resenia]
 
+    def __init__(self, dataset: str):
+        '''Constructor: carga en el atributo 'resenias' una lista de objetos
+        de la clase 'Resenia' a partir de un fichero de texto.
+
+        Argumentos:
+        arg1 (string): Ruta del fichero del cual se leerán los datos
+        '''
+        self.resenias = []
+        with open(dataset) as csvfile:
+            try:
+                spamreader = csv.reader(csvfile, delimiter='\t')
+                next(spamreader)        # La primera línea son los nombres de las columnas
+                for row in spamreader:
+                    current_review = resenia.Resenia(row[0], row[3], int(row[2]), None)
+                    self.resenias.append(current_review)
+            except UnicodeDecodeError:
+                print("Error: No se ha podido abrir el fichero " + dataset)
+            
+            
 
     def buscar_resenias_por_local(self, local_id : str):
         ''' Método que devuelve todas las reseñas de un local dado.
@@ -39,21 +58,7 @@ class ConjuntoResenias:
         '''
         return self.resenias[index]
 
-    def carga_datos(self, dataset: str):
-        '''Método que carga en el atributo 'resenias' una lista de objetos
-        de la clase 'Resenia' a partir de un fichero de texto.
-
-        Argumentos:
-        arg1 (string): Ruta del fichero del cual se leerán los datos
-        '''
-        self.resenias = []
-        with open(dataset) as csvfile:
-            spamreader = csv.reader(csvfile, delimiter='\t')
-            assert(spamreader != None)
-            next(spamreader)        # La primera línea son los nombres de las columnas
-            for row in spamreader:
-                current_review = resenia.Resenia(row[0], row[3], int(row[2]), None)
-                self.resenias.append(current_review)
+        
 
 
     def numero_resenias(self):
