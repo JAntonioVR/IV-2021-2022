@@ -8,25 +8,19 @@ from conjunto_resenias import ConjuntoResenias
 def test_constructor_conjunto_resenias():
     '''
     Comprueba que el constructor de la clase ConjuntoResenia no devuelve un objeto nulo
-    sino un objeto de la clase ConjuntoResenias.
+    sino un objeto de la clase ConjuntoResenias y que no hay errores en la carga del
+    conjunto de datos.
     '''
-    review_set = ConjuntoResenias(None)
-    assert(review_set != None and isinstance(review_set, ConjuntoResenias))
+    test_dataset_name()
+    review_set = ConjuntoResenias("./data/Restaurant_Reviews.tsv")
+    assert(review_set != None and isinstance(review_set, ConjuntoResenias) and review_set.numero_resenias() >= 0)
 
-def test_dataset_name(dataset: str):
+def test_dataset_name():
     '''
-    Comprueba que el fichero de nombre 'dataset' existe.
+    Comprueba que el fichero de datos existe.
     '''
+    dataset = "./data/Restaurant_Reviews.tsv"
     assert(os.path.isfile(dataset))
-
-def test_carga_datos(dataset: str):
-    '''
-    Comprueba que no hay errores en la carga de los datos de la clase ConjuntoResenias.
-    '''
-    test_dataset_name(dataset)
-    review_set = ConjuntoResenias(None)
-    review_set.carga_datos(dataset)
-    assert(review_set.numero_resenias() >= 0)
 
 def test_buscar_resenias_por_local(conjunto_resenias: ConjuntoResenias,local_id: str):
     '''
