@@ -1,3 +1,4 @@
+# encoding: utf-8
 import os
 import pytest
 import sys
@@ -5,47 +6,53 @@ sys.path.append('./review_set')
 from resenia import Resenia
 from conjunto_resenias import ConjuntoResenias
 
-def test_constructor_conjunto_resenias():
+@pytest.fixture
+def dataset():
+    return "./data/Restaurant_Reviews.tsv"
+
+@pytest.fixture
+def conjunto_resenias(dataset):
+    return ConjuntoResenias(dataset)
+
+def test_constructor_conjunto_resenias(dataset):
     '''
     Comprueba que el constructor de la clase ConjuntoResenia no devuelve un objeto nulo
     sino un objeto de la clase ConjuntoResenias y que no hay errores en la carga del
     conjunto de datos.
     '''
-    test_dataset_name()
-    review_set = ConjuntoResenias("./data/Restaurant_Reviews.tsv")
+    test_dataset_name(dataset)
+    review_set = ConjuntoResenias(dataset)
     assert(review_set != None and isinstance(review_set, ConjuntoResenias) and review_set.numero_resenias() >= 0)
 
-def test_dataset_name():
+def test_dataset_name(dataset):
     '''
     Comprueba que el fichero de datos existe.
     '''
-    dataset = "./data/Restaurant_Reviews.tsv"
     assert(os.path.isfile(dataset))
 
-def test_buscar_resenias_por_local(conjunto_resenias: ConjuntoResenias,local_id: str):
+def test_buscar_resenias_por_local(conjunto_resenias):
     '''
     Comprueba que no hay errores en la búsqueda por local de la clase ConjuntoResenias.
     '''
-    resenias_tfk = conjunto_resenias.buscar_resenias_por_local(local_id)
+    local_id = "The Food Kingdom"
+    resenias_local = conjunto_resenias.buscar_resenias_por_local(local_id)
     res = True
-    assert(isinstance(resenias_tfk, ConjuntoResenias))
-    for i in range(resenias_tfk.numero_resenias()):
-        review = resenias_tfk.buscar_resenia_por_indice(i)
-        res = res and (review.local_id == local_id)
+    assert(isinstance(resenias_local, ConjuntoResenias))
+    for resenia in resenias_local.resenias:
+        res = res and (resenia.local_id == local_id)
     assert(res)
 
-def test_instancias_conjunto(conjunto_resenias: ConjuntoResenias):
+def test_instancias_conjunto(conjunto_resenias):
     '''
     Comprueba que todos los objetos que almacena 'conjunto_resenias' son de la clase
     Resenia.
     '''
     res = True
-    for i in range(conjunto_resenias.numero_resenias()):
-        review = conjunto_resenias.buscar_resenia_por_indice(i)
-        res = res and isinstance(review, Resenia)
+    for resenia in conjunto_resenias.resenias:
+        res = res and isinstance(resenia, Resenia)
     assert(res)
     
-def test_texto_resenia(r: Resenia):
+def comprueba_texto_resenia(r):
     '''
     Comprueba que el atributo 'texto' de la reseña 'r' es una cadena de caracteres
     no vacía.
@@ -53,14 +60,14 @@ def test_texto_resenia(r: Resenia):
     texto = r.texto
     assert(isinstance(texto, str) and len(texto) > 0)
 
-def test_puntuacion_resenia(r: Resenia):
+def comprueba_puntuacion_resenia(r):
     '''
     Comprueba que el atributo 'puntuacion' de la reseña 'r' es un entero entre 1 y 5.
     '''
     puntuacion = r.puntuacion
     assert(isinstance(puntuacion, int) and puntuacion > 0 and puntuacion <= 5 )
 
-def test_local_id_resenia(r: Resenia):
+def comprueba_local_id_resenia(r):
     '''
     Comprueba que el atributo 'local_id' de la reseña 'r' es una cadena de caracteres
     no vacía.
@@ -68,18 +75,19 @@ def test_local_id_resenia(r: Resenia):
     local_id = r.local_id
     assert(isinstance(local_id, str) and len(local_id) > 0)
 
-def test_resenia(r: Resenia):
+def comprueba_resenia(r):
     '''
     Comprueba la integridad de los atributos de 'r'
     '''
-    test_texto_resenia(r)
-    test_puntuacion_resenia(r)
-    test_local_id_resenia(r)
+    comprueba_texto_resenia(r)
+    comprueba_puntuacion_resenia(r)
+    comprueba_local_id_resenia(r)
 
-def test_conjunto_resenias(conjunto_resenias: ConjuntoResenias):
+def test_conjunto_resenias(conjunto_resenias):
     '''
     Comprueba la integridad de cada una de las reseñas de conjunto_resenias
     '''
     for i in range(conjunto_resenias.numero_resenias()):
         review = conjunto_resenias.buscar_resenia_por_indice(i)
-        test_resenia(review)
+        comprueba_resenia(review)
+

@@ -68,44 +68,6 @@ def add_dependency(c, package, dev=False):
         print("Ha ocurrido algún error al añadir la dependencia")
 
 
-# ─── EJECUTAR TESTS ─────────────────────────────────────────────────────────────
-@task
-def test(c):
-    '''
-    Lanza a ejecutar los test
-    '''
-    print("─── EJECUTANDO TEST ────────────────────────────────────────────────────────────")
-    print("Ejecutando test de constructor de ConjuntoResenias...")
-    test_constructor_conjunto_resenias()
-    print("OK")
-
-    dataset = "./data/Restaurant_Reviews.tsv"
-
-    print("Ejecutando test de comprobación de existencia del dataset Restaurant_Reviews.tsv...")
-    test_dataset_name(dataset)
-    print("OK")
-
-    print("Ejecutando test de carga de datos...")
-    test_carga_datos(dataset)
-    print("OK")
-
-    conjunto_resenias = ConjuntoResenias(None)
-    conjunto_resenias.carga_datos(dataset)
-
-    print("Ejecutando test de integridad del conjunto de reseñas...")
-    test_conjunto_resenias(conjunto_resenias)
-    print("OK")
-
-    print("Ejecutando test de búsqueda por local...")
-    test_buscar_resenias_por_local(conjunto_resenias, "The Food Kingdom")
-    print("OK")
-
-    print("─── TODOS LOS TEST HAN SIDO SUPERADOS ──────────────────────────────────────────") 
-
-
-
-
-
 # ─── COMPROBAR SINTAXIS ─────────────────────────────────────────────────────────
 @task
 def check(c):
