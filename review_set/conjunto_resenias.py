@@ -17,7 +17,7 @@ class ConjuntoResenias:
 
     resenias: List[resenia.Resenia]
 
-    def __init__(self, dataset: str):
+    def __init__(self, dataset = None):
         '''Constructor: carga en el atributo 'resenias' una lista de objetos
         de la clase 'Resenia' a partir de un fichero de texto.
 
@@ -25,16 +25,16 @@ class ConjuntoResenias:
         arg1 (string): Ruta del fichero del cual se leerán los datos
         '''
         self.resenias = []
-        with open(dataset) as csvfile:
-            try:
-                spamreader = csv.reader(csvfile, delimiter='\t')
-                next(spamreader)        # La primera línea son los nombres de las columnas
-                for row in spamreader:
-                    current_review = resenia.Resenia(row[0], row[3], int(row[2]), None)
-                    self.resenias.append(current_review)
-            except UnicodeDecodeError:
-                print("Error: No se ha podido abrir el fichero " + dataset)
-            
+        if(dataset!=None):
+            with open(dataset) as csvfile:
+                try:
+                    spamreader = csv.reader(csvfile, delimiter='\t')
+                    next(spamreader)        # La primera línea son los nombres de las columnas
+                    for row in spamreader:
+                        current_review = resenia.Resenia(row[0], row[3], int(row[2]), None)
+                        self.resenias.append(current_review)
+                except UnicodeDecodeError:
+                    print("Error: No se ha podido abrir el fichero " + dataset)
             
 
     def buscar_resenias_por_local(self, local_id : str):
@@ -47,7 +47,9 @@ class ConjuntoResenias:
         for resenia in self.resenias:
             if(resenia.local_id == local_id):
                 result.append(resenia)
-        return ConjuntoResenias(result)
+        conjunto = ConjuntoResenias()
+        conjunto.resenias = result
+        return conjunto
 
     def buscar_resenia_por_indice(self, index: int):
         ''' Método que devuelve la reseña que ocupa el lugar 'index'
