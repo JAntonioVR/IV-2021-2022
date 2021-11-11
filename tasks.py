@@ -75,7 +75,12 @@ def check(c):
     if(c.run("py3compile " + module)):
         print("OK")
     
-            
+@task
+def test(c):
+    '''
+    Ejecuta los test usando `pytest`
+    '''
+    c.run("pytest")     
         
     
 # ────────────────────────────────────────────────────────────────────────────────
