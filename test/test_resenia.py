@@ -24,6 +24,15 @@ def test_constructor_conjunto_resenias(dataset):
     review_set = ConjuntoResenias(dataset)
     assert(review_set != None and isinstance(review_set, ConjuntoResenias) and review_set.numero_resenias() >= 0)
 
+
+def test_constructor_conjunto_resenias_nulo():
+    '''
+    Comprueba que el constructor de la clase ConjuntoResenia crea un conjunto vacío si
+    no se especifica ningún dataset
+    '''
+    review_set = ConjuntoResenias()
+    assert(review_set != None and isinstance(review_set, ConjuntoResenias) and review_set.numero_resenias() == 0)
+
 def test_dataset_name(dataset):
     '''
     Comprueba que el fichero de datos existe.
