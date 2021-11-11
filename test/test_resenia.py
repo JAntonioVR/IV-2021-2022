@@ -1,10 +1,10 @@
 # encoding: utf-8
 import os
 import pytest
-import sys
-sys.path.append('./review_set')
-from resenia import Resenia
-from conjunto_resenias import ConjuntoResenias
+# import sys
+# sys.path.append('./review_set')
+from review_set.resenia import Resenia
+from review_set.conjunto_resenias import ConjuntoResenias
 
 @pytest.fixture
 def dataset():

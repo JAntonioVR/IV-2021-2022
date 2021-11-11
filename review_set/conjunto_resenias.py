@@ -3,19 +3,18 @@
 from dataclasses import dataclass
 from typing import List
 
-import resenia
+from review_set.resenia import Resenia
 import csv
-import os
 
 @dataclass
 class ConjuntoResenias:
     '''Clase para almacenar un conjunto de reseñas.
     
     Atributos:
-    resenias (List[resenia.Resenia]): Conjunto de reseñas almacenado.
+    resenias (List[Resenia]): Conjunto de reseñas almacenado.
     '''
 
-    resenias: List[resenia.Resenia]
+    resenias: List[Resenia]
 
     def __init__(self, dataset = None):
         '''Constructor: carga en el atributo 'resenias' una lista de objetos
@@ -31,12 +30,11 @@ class ConjuntoResenias:
                     spamreader = csv.reader(csvfile, delimiter='\t')
                     next(spamreader)        # La primera línea son los nombres de las columnas
                     for row in spamreader:
-                        current_review = resenia.Resenia(row[0], row[3], int(row[2]), None)
+                        current_review = Resenia(row[0], row[3], int(row[2]), None)
                         self.resenias.append(current_review)
                 except UnicodeDecodeError:
                     print("Error: No se ha podido abrir el fichero " + dataset)
             
-
     def buscar_resenias_por_local(self, local_id : str):
         ''' Método que devuelve todas las reseñas de un local dado.
         
@@ -59,9 +57,6 @@ class ConjuntoResenias:
         arg1 (int): Índice de la reseña que se busca
         '''
         return self.resenias[index]
-
-        
-
 
     def numero_resenias(self):
         '''Método que devuelve el número de reseñas del conjunto

@@ -13,10 +13,6 @@
 # Importamos invoke
 from invoke import task
 
-import sys
-sys.path.append('./review_set')
-from conjunto_resenias import ConjuntoResenias
-
 # ─── INSTALACIÓN DE TODAS LAS DEPENDENCIAS ──────────────────────────────────────
 @task
 def install(c):
