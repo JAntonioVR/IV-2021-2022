@@ -13,10 +13,6 @@
 # Importamos invoke
 from invoke import task
 
-# Importamos el fichero de test que se encuentra en la carpeta 'test'
-import sys
-sys.path.append('./test')
-from test_resenia import test_constructor_conjunto_resenias, test_dataset_name, test_carga_datos, test_conjunto_resenias, test_buscar_resenias_por_local
 
 sys.path.append('./review_set')
 from conjunto_resenias import ConjuntoResenias
