@@ -13,12 +13,6 @@
 # Importamos invoke
 from invoke import task
 
-# Importamos el fichero de test que se encuentra en la carpeta 'test'
-import sys
-sys.path.append('./test')
-import test_hello_world
-
-
 # ─── INSTALACIÓN DE TODAS LAS DEPENDENCIAS ──────────────────────────────────────
 @task
 def install(c):
@@ -66,16 +60,6 @@ def add_dependency(c, package, dev=False):
         print("Ha ocurrido algún error al añadir la dependencia")
 
 
-# ─── EJECUTAR TESTS ─────────────────────────────────────────────────────────────
-@task
-def test(c):
-    '''
-    Lanza a ejecutar los test
-    '''
-    print("Ejecutando test...")
-    test_hello_world.hello_world()
-
-
 # ─── COMPROBAR SINTAXIS ─────────────────────────────────────────────────────────
 @task
 def check(c):
@@ -87,7 +71,12 @@ def check(c):
     if(c.run("py3compile " + module)):
         print("OK")
     
-            
+@task
+def test(c):
+    '''
+    Ejecuta los test usando `pytest`
+    '''
+    c.run("pytest")     
         
     
 # ────────────────────────────────────────────────────────────────────────────────

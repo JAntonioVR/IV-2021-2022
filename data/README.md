@@ -1,0 +1,2 @@
+# Restaurant_Reviews.tsv
+El dataset original es [**Restaurant Reviews**](https://www.kaggle.com/akram24/restaurant-reviews), de *kaggle*, aunque el utilizado es una variación hecha por mí en la que se añade una columna con el número de estrellas asignado a la reseña.
