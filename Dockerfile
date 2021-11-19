@@ -5,10 +5,20 @@ RUN useradd --create-home iv_app \
 
 USER iv_app
 
-WORKDIR /app/test
-
-COPY poetry.lock pyproject.toml /app/test/
-RUN export PATH="$PATH:/home/iv_app/.local/bin" \
+COPY poetry.lock pyproject.toml tasks.py /home/iv_app/
+WORKDIR /home/iv_app
+RUN export PATH=$PATH:/home/iv_app/.local/bin \
 &&  pip install --upgrade pip \
 &&  pip install poetry \
-&&  poetry install
+&&  poetry config virtualenvs.create false \
+&&  pip install invoke \
+&&  invoke install
+
+WORKDIR /app/test
+
+ENV PATH=$PATH:/home/iv_app/.local/bin 
+
+
+ENTRYPOINT [ "invoke", "test" ]
+
+# Ejecutar con docker run -it --entrypoint "/bin/bash" --rm jantoniovr/iv-2021-2022
