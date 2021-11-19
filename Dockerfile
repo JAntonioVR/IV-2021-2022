@@ -21,4 +21,4 @@ ENV PATH=$PATH:/home/iv_app/.local/bin
 
 ENTRYPOINT [ "invoke", "test" ]
 
-# Ejecutar con docker run -it --entrypoint "/bin/bash" --rm jantoniovr/iv-2021-2022
+# Ejecutar con docker run -it -v `pwd`:/app/test --rm 21f80092f114

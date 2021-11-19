@@ -76,7 +76,6 @@ def test(c):
     '''
     Ejecuta los test usando `pytest`
     '''
-    c.run("pytest")     
-        
-    
+    c.run("pytest")
+
 # ────────────────────────────────────────────────────────────────────────────────
