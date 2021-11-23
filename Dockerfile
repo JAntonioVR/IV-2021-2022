@@ -20,5 +20,3 @@ ENV PATH=$PATH:/home/iv_app/.local/bin
 
 
 ENTRYPOINT [ "invoke", "test" ]
-
-# Ejecutar con docker run -it -v `pwd`:/app/test --rm 21f80092f114
