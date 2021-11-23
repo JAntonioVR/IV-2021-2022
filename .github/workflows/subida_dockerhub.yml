@@ -14,3 +14,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - run: docker build -t jantoniovr/iv-2021-2022 .
       - run: docker push jantoniovr/iv-2021-2022
+      
