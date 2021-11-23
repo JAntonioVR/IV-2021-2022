@@ -80,6 +80,8 @@ def test(c):
     '''
     c.run("pytest")
 
+
+# ─── EJECUTA CONTENEDOR DOCKER ──────────────────────────────────────────────────
 @task
 def ejecuta_docker(c):
     '''

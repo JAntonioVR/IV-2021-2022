@@ -24,15 +24,17 @@ Available tasks:
 
   add-dependency   Añade una nueva dependencia al fichero 'pyproject.toml'
   check            Comprueba la sintaxis de los ficheros de código
+  ejecuta-docker   Ejecuta el contenedor de Docker para pasar los test
   install          Instala todas las dependencias
   install-no-dev   Instala las dependencias que NO son de desarrollador
-  test             Lanza a ejecutar los test
+  test             Ejecuta los test usando `pytest`
 ```
 
 Más en profundidad:
 
 * `invoke [--dev] [--package=STRING]`: Se añade, mediante poetry, una dependencia al fichero `pyproject.toml`, especificada por la opción `--package`. Si se indica la opción `--dev` (o `-d`) se añadirá a las dependencias de desarrollador.
 * `invoke check`: Utilizando `py3compile`, comprueba la sintaxis de los ficheros de código y de las entidades programadas hasta el momento.
+* `invoke ejecuta-docker`: Ejecuta los test utilizando un contenedor de Docker. Más información a continuación.
 * `invoke install`: Instala todas las dependencias, sean o no de desarrollador.
 * `invoke install-no-dev`: Instala solo las dependencias que **no** sean de desarrollador.
 * `invoke test`: Lanza a ejecutar los test.
@@ -60,8 +62,14 @@ Una vez implementados los test y automatizada su ejecución mediante el gestor d
 
 Para la ejecución del contenedor bastaría con la ejecución de la orden:
 
-```
+```bash
 docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022
+```
+
+O también se puede utilizar el gestor de tareas para ejecutar el contenedor mediante la orden:
+
+```bash
+inv[oke] ejecuta-docker
 ```
 
 Este contenedor está continuamente sincronizado con DockerHub, mediante su propio repositorio [`jantoniovr/iv-2021-2022`](https://hub.docker.com/repository/docker/jantoniovr/iv-2021-2022), que coincide con el nombre de este.
