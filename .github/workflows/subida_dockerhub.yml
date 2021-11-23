@@ -1,0 +1,11 @@
+name: subida-dockerhub
+on: [push]
+jobs:
+  construccion-del-contenedor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+  subida-a-dockerhub:
+    needs: construccion-del-contenedor
+    steps:
