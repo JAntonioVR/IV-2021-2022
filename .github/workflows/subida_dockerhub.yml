@@ -24,6 +24,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          readme: ./README.md
-          repository: JAntonioVR/IV-2021-2022
+          readme: "./README.md"
+          repository: jantoniovr/iv-2021-2022
       
