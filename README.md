@@ -85,10 +85,10 @@ Comprobaremos el tiempo de construcción (en local), el tiempo de ejecución de 
 
 | **Contenedor base** | **Tiempo de construcción**                             | **Tiempo de subida**                                   | **Tiempo de ejecución de test** | **Tamaño de la imagen comprimida** |
 |-----------------|----------------------------------------------------|----------------------------------------------------|-----------------------------|--------------------------------|
-| `python:3.8`      | real    0m0,876s user    0m0,191s sys     0m0,162s | real    0m4,424s user    0m0,043s sys     0m0,013s | 0.05 s                      | 364.1 MB                       |
-| `python:3.8-slim` | real    0m0,680s user    0m0,245s sys     0m0,130s | real    0m3,527s user    0m0,030s sys     0m0,028s | 0.05 s                      | 364.1 MB                       |
-| `python:3.9`      | real    0m0,781s user    0m0,237s sys     0m0,134s | real    0m3,759s user    0m0,026s sys     0m0,032s | 0.05 s                      | 364.1 MB                       |
-| `python:3.9-slim` | real    0m0,606s user    0m0,215s sys     0m0,151s | real    0m4,171s user    0m0,016s sys     0m0,038s | 0.04 s                      | 364.1 MB                       |
+| `python:3.8`      	| real    0m0,876s<br>user    0m0,191s<br>sys     0m0,162s 	| real    0m4,424s<br>user    0m0,043s<br>sys     0m0,013s 	| 0.05 s                      	| 364.1 MB                       	|
+| `python:3.8-slim` 	| real    0m0,680s<br>user    0m0,245s<br>sys     0m0,130s 	| real    0m3,527s<br>user    0m0,030s<br>sys     0m0,028s 	| 0.05 s                      	| 364.1 MB                       	|
+| `python:3.9`      	| real    0m0,781s<br>user    0m0,237s<br>sys     0m0,134s 	| real    0m3,759s<br>user    0m0,026s<br>sys     0m0,032s 	| 0.05 s                      	| 364.1 MB                       	|
+| `python:3.9-slim` 	| real    0m0,606s<br>user    0m0,215s<br>sys     0m0,151s 	| real    0m4,171s<br>user    0m0,016s<br>sys     0m0,038s 	| 0.04 s   
 
 Como vemos, el tiempo de ejecución de los tests y el tamaño de la imagen no es significativo, por lo que nos centraremos en el tiempo de construcción y subida. Las versiones construidas utilizando versiones slim como base son claramente más rápidas al construir, y como vemos es más rápida la subida utilizando la versión 3.8, por lo que en base a nuestros criterios y a nuestras pruebas consideramos el uso del contenedor base **`python:3.8-slim`**.
 
