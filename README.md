@@ -110,3 +110,4 @@ inv[oke] ejecuta-docker
 ```
 
 Este contenedor está continuamente sincronizado con DockerHub, mediante su propio repositorio [`jantoniovr/iv-2021-2022`](https://hub.docker.com/repository/docker/jantoniovr/iv-2021-2022), que coincide con el nombre de este.
+
