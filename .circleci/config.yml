@@ -13,7 +13,10 @@ jobs:
       - image: jantoniovr/iv-2021-2022
         auth:
           username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD 
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - run: docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
