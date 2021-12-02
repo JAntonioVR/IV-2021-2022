@@ -9,13 +9,11 @@ orbs:
 
 jobs:
   test:
-    machine: 
-      image: ubuntu-2004:202111-01
-    steps:
-      - checkout
-      - run: docker login --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASSWORD
-      - run: docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022
-
+    docker:
+      - image: jantoniovr/iv-2021-2022
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
