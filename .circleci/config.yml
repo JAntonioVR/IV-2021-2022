@@ -17,8 +17,8 @@ jobs:
       - image: jantoniovr/iv-2021-2022:<< parameters.python-version >>
     steps:
       - checkout
-      - run: echo `whoami` && echo $PATH && echo `pwd`
-      - run: pytest
+      - run: echo `whoami` && echo $PATH && echo `pwd` && which python && python --version && tree /
+      - run: poetry run pytest
       #- run: invoke test
       #- setup_remote_docker:
       #    version: 19.03.13
