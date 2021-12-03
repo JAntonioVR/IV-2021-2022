@@ -14,7 +14,7 @@ jobs:
         type: string
         default: "3.8-slim"
     docker:
-      - image: jantoniovr/iv-2021-2022
+      - image: jantoniovr/iv-2021-2022:<< pipeline.parameters.python-version >>
     steps:
       - checkout
       #- setup_remote_docker:
