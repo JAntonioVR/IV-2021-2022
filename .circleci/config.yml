@@ -14,7 +14,7 @@ jobs:
         type: string
         default: "3.8-slim"
     docker:
-      - image: jantoniovr/iv-2021-2022:<< pipeline.parameters.python-version >>
+      - image: jantoniovr/iv-2021-2022:<< parameters.python-version >>
     steps:
       - checkout
       - run: invoke test
