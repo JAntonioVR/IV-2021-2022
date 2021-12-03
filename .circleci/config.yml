@@ -17,6 +17,7 @@ jobs:
       - image: jantoniovr/iv-2021-2022:<< pipeline.parameters.python-version >>
     steps:
       - checkout
+      - run: invoke test
       #- setup_remote_docker:
       #    version: 19.03.13
       #- run: docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022
@@ -28,4 +29,6 @@ workflows:
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - test
+      - test:
+        parameters:
+          python-version: ['3.10-slim', '3.9-slim', '3.8-slim']
