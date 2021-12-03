@@ -1,18 +1,16 @@
-FROM python:3.8
+FROM python:3.8-slim
 
 RUN useradd --create-home iv_app \
 && mkdir -p /app/test
 
 USER iv_app
 
-COPY poetry.lock pyproject.toml tasks.py /home/iv_app/
 WORKDIR /home/iv_app
+COPY poetry.lock pyproject.toml tasks.py ./
+
 RUN export PATH=$PATH:/home/iv_app/.local/bin \
-&&  pip install --upgrade pip \
 &&  pip install poetry \
-&&  poetry config virtualenvs.create false \
-&&  pip install invoke \
-&&  invoke install
+&&  poetry install
 
 WORKDIR /app/test
 
