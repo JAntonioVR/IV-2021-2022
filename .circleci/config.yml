@@ -17,11 +17,12 @@ jobs:
       - image: jantoniovr/iv-2021-2022:<< parameters.python-version >>
     steps:
       - checkout
+      - run: echo `whoami` && echo $PATH
       - run: invoke test
       #- setup_remote_docker:
       #    version: 19.03.13
       #- run: docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022
-      - run: echo "OK"
+      # - run: echo "OK"
       
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
