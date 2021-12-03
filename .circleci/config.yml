@@ -18,7 +18,8 @@ jobs:
     steps:
       - checkout
       - run: echo `whoami` && echo $PATH && echo `pwd`
-      - run: invoke test
+      - run: pytest
+      #- run: invoke test
       #- setup_remote_docker:
       #    version: 19.03.13
       #- run: docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022
