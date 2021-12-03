@@ -1,4 +1,5 @@
-FROM python:3.8-slim
+ARG PYTHON_VERSION=3.8-slim
+FROM python:${PYTHON_VERSION}
 
 RUN useradd --create-home iv_app \
 && mkdir -p /app/test
