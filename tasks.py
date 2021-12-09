@@ -70,13 +70,23 @@ def check(c):
     print("Comprobando sintaxis...")
     if(c.run("py3compile " + module)):
         print("OK")
-    
+
+
+# ─── TEST ───────────────────────────────────────────────────────────────────────
 @task
 def test(c):
     '''
     Ejecuta los test usando `pytest`
     '''
-    c.run("pytest")     
-        
-    
+    c.run("pytest")
+
+
+# ─── EJECUTA CONTENEDOR DOCKER ──────────────────────────────────────────────────
+@task
+def ejecuta_docker(c):
+    '''
+    Ejecuta el contenedor de Docker para pasar los test
+    '''
+    c.run("docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022")
+
 # ────────────────────────────────────────────────────────────────────────────────
