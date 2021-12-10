@@ -26,6 +26,6 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - test:
-        matrix:
-          parameters:
-            python-version: ['3.10-slim', '3.9-slim', '3.8-slim']
+          matrix:
+            parameters:
+              python-version: ['3.10-slim', '3.9-slim', '3.8-slim']
