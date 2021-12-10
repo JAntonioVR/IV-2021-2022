@@ -12,7 +12,7 @@ jobs:
     parameters:
       python-version:
         type: string
-        #default: "3.8-slim"
+        default: "3.8-slim"
     docker:
       - image: jantoniovr/iv-2021-2022:<< parameters.python-version >>
     steps:
