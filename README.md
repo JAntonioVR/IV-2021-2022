@@ -54,7 +54,7 @@ $ inv[oke] test
 
 Una vez implementados los test y automatizada su ejecución mediante el gestor de tareas, se encapsulará todo lo necesario para la ejecución de estos test en un contenedor de [**`Docker`**](https://www.docker.com/). La construcción del docker se puede ver modelada en el fichero [`Dockerfile`](./Dockerfile), aunque la explicaremos brevemente:
 
-En un primer momento, se decidió un único contenedor base, cuya justificación se puede encontrar en [este fichero](./docs/contenedor_docker.md). Sin embargo, en siguientes versiones se permitió parametrizar la construcción del contenedor pudiendo probar distintas versiones de `python`, dejando como parámetro por defecto la versión primera: `python:3.8-slim`:
+En un primer momento, se decidió un único contenedor base, cuya justificación se puede encontrar en [este fichero](./docs/contenedor_docker.md). Sin embargo, en siguientes versiones se permitió parametrizar la construcción del contenedor pudiendo probar distintas versiones de `python` con distintos contenedores base, dejando como parámetro por defecto el contenedor base primero: `python:3.8-slim`:
 
 ```Dockerfile
 ARG PYTHON_VERSION=3.8-slim
@@ -77,4 +77,13 @@ O también se puede utilizar el gestor de tareas para ejecutar el contenedor med
 inv[oke] ejecuta-docker -v <version de Python>
 ```
 
-Este contenedor está continuamente sincronizado con DockerHub, mediante su propio repositorio [`jantoniovr/iv-2021-2022`](https://hub.docker.com/repository/docker/jantoniovr/iv-2021-2022), que coincide con el nombre de este. En DockerHub podemos encontrar imágenes para distintas versiones de python: `3.8`, `3.8-slim`, `3.9`, `3.9-slim`, `3.10`, `3.10-slim`. Se han usado estas versiones porque la 3.8 es la última versión estable de python y 3.10 es la última versión, y queremos comprobar el funcionamiento de nuestro proyecto en las versiones estándar y en las versiones slim, más ligeras.
+Este contenedor y las distintas imágenes están continuamente sincronizados con DockerHub, mediante su propio repositorio [`jantoniovr/iv-2021-2022`](https://hub.docker.com/repository/docker/jantoniovr/iv-2021-2022), que coincide con el nombre de este. En DockerHub podemos encontrar imágenes utilizando distintos contenedores base con distintas versiones de python: `3.8`, `3.8-slim`, `3.9`, `3.9-slim`, `3.10`, `3.10-slim`. Se han usado estas versiones porque la 3.8 es la versión sobre la que se ha programado el código, es una versión estable y la más utilizada a día de hoy.  Por otra parte, la última versión es la 3.10, y queremos testear el código en todas las versiones intermedias, por tanto lo lógico es usar las versiones 3.8, 3.9 y 3.10. Como además es deseable testear el código en los contenedores slim, que son más ligeros y proporcionaron un mejor rendimiento en las pruebas ejecutadas (véase [esta documentación](docs/contenedor_docker.md)), se han incluido las respectivas versiones slim para crear y subir a DockerHub las respectivas imágenes.
+
+## Integración continua
+
+A partir de las distintas imágenes creadas y subidas a DockerHub, conviene integrar la ejecución de los test en las distintas versiones de Python con cada subida a github. Para ello, se han configurado varios **sistemas de integración continua**. Concretamente:
+
+* Se ha hecho uso de [**Circle CI**](https://circleci.com/) como sistema de CI que ejecuta en paralelo los tests para las distintas versiones de Python, empleando las imágenes subidas a DockerHub para cada versión.
+* Se ha hecho uso de [**Github Actions**](https://github.com/features/actions) como sistema de CI que ejecuta los tests empleando la versión por defecto. 
+
+Por tanto, cada vez que se hace un push a este repositorio se ejecutan los test un total de siete veces con seis contenedores base distintos. Pudiendo estar alerta y acorralar rápidamente cualquier fallo en los tests.
