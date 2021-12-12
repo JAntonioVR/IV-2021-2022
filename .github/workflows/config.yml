@@ -33,4 +33,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022
+      - run: docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022:3.8-slim
