@@ -17,4 +17,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - run: docker build --build-arg PYHTON_VERSION=${{ matrix.python-version }} -t jantoniovr/iv-2021-2022:${{ matrix.python-version }} .
       - run: docker push jantoniovr/iv-2021-2022:${{ matrix.python-version }}
-      
+     
