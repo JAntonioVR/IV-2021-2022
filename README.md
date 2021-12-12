@@ -50,11 +50,16 @@ Como framework de test se ha utilizado el módulo `pytest`, versión `6.2.5` o p
 $ inv[oke] test
 ```
 
-### Virtualización
+## Contenedor para pruebas
 
 Una vez implementados los test y automatizada su ejecución mediante el gestor de tareas, se encapsulará todo lo necesario para la ejecución de estos test en un contenedor de [**`Docker`**](https://www.docker.com/). La construcción del docker se puede ver modelada en el fichero [`Dockerfile`](./Dockerfile), aunque la explicaremos brevemente:
 
-* Se ha utilizado como contenedor base la [imagen oficial de `Python`](https://hub.docker.com/_/python), en su versión 3.8. Tras comparar otras opciones, la conclusión que saqué es que, al menos en este punto del proyecto, solo necesito de un contenedor con soporte para Python, incluyendo `pip` para instalar el gestor de dependencias `Poetry` y el gestor de tareas `invoke`, y a partir de estos las dependencias necesarias. Para ello me bastaba con lo ofrecido por la imagen oficial de Python, que además ofrece garantías de mantenimiento por parte de la comunidad.
+En un primer momento, se decidió un único contenedor base, cuya justificación se puede encontrar en [este fichero](./docs/contenedor_docker.md). Sin embargo, en siguientes versiones se permitió parametrizar la construcción del contenedor pudiendo probar distintas versiones de `python`, dejando como parámetro por defecto la versión primera: `python:3.8-slim`:
+
+```Dockerfile
+ARG PYTHON_VERSION=3.8-slim
+FROM python:${PYTHON_VERSION}
+```
 
 * Como buena práctica, se ha creado un nuevo usuario `iv_app` y ejecutado los comandos con este, evitando así el uso del superusuario y los peligros que conlleva.
 
@@ -63,13 +68,13 @@ Una vez implementados los test y automatizada su ejecución mediante el gestor d
 Para la ejecución del contenedor bastaría con la ejecución de la orden:
 
 ```bash
-docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022
+docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022:<version de Python>
 ```
 
 O también se puede utilizar el gestor de tareas para ejecutar el contenedor mediante la orden:
 
 ```bash
-inv[oke] ejecuta-docker
+inv[oke] ejecuta-docker -v <version de Python>
 ```
 
-Este contenedor está continuamente sincronizado con DockerHub, mediante su propio repositorio [`jantoniovr/iv-2021-2022`](https://hub.docker.com/repository/docker/jantoniovr/iv-2021-2022), que coincide con el nombre de este.
+Este contenedor está continuamente sincronizado con DockerHub, mediante su propio repositorio [`jantoniovr/iv-2021-2022`](https://hub.docker.com/repository/docker/jantoniovr/iv-2021-2022), que coincide con el nombre de este. En DockerHub podemos encontrar imágenes para distintas versiones de python: `3.8`, `3.8-slim`, `3.9`, `3.9-slim`, `3.10`, `3.10-slim`. Se han usado estas versiones porque la 3.8 es la última versión estable de python y 3.10 es la última versión, y queremos comprobar el funcionamiento de nuestro proyecto en las versiones estándar y en las versiones slim, más ligeras.
