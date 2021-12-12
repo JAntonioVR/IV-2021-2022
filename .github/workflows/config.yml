@@ -1,6 +1,7 @@
 name: subida-dockerhub
 on: [push]
 jobs:
+  # Construccion de las distintas versiones del contenedor y subida a DockerHub
   construccion-subida-del-contenedor:
     runs-on: ubuntu-latest
     strategy:
@@ -17,6 +18,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - run: docker build --build-arg PYHTON_VERSION=${{ matrix.python-version }} -t jantoniovr/iv-2021-2022:${{ matrix.python-version }} .
       - run: docker push jantoniovr/iv-2021-2022:${{ matrix.python-version }}
+
+  # Sincronizacion del README del repositorio de GitHub con el de DockerHub
   sincronizacion_readme_dockerhub:
     runs-on: ubuntu-latest
     steps:
@@ -28,7 +31,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           readme: "./README.md"
           repository: jantoniovr/iv-2021-2022
-      
+  
+  # Ejecucion de los test con el contenedor base 3.8-slim
   test:
     runs-on: ubuntu-latest
     steps:
