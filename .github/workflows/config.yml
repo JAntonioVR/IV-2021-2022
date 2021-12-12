@@ -17,4 +17,20 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - run: docker build --build-arg PYHTON_VERSION=${{ matrix.python-version }} -t jantoniovr/iv-2021-2022:${{ matrix.python-version }} .
       - run: docker push jantoniovr/iv-2021-2022:${{ matrix.python-version }}
-     
+  sincronizacion_readme_dockerhub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Dockerhub Readme
+        uses: ms-jpq/sync-dockerhub-readme@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          readme: "./README.md"
+          repository: jantoniovr/iv-2021-2022
+      
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022
