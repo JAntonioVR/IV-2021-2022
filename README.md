@@ -1,8 +1,8 @@
 # Proyecto IV
-> Juan Antonio Villegas Recio 
+> Juan Antonio Villegas Recio
 
 ## Descripción del problema
-Todo dueño de un restaurante busca siempre no sólo su beneficio, sino también el bienestar de sus clientes, pudiendo recoger opiniones y reseñas y analizarlas para saber en qué mejorar. El objetivo de este proyecto es ofrecer un medio que a partir de la información proporcionada por parte de los clientes sugiera estrategias y decisiones que ayuden a mejorar el negocio y la experiencia de los consumidores. 
+Todo dueño de un restaurante busca siempre no sólo su beneficio, sino también el bienestar de sus clientes, pudiendo recoger opiniones y reseñas y analizarlas para saber en qué mejorar. El objetivo de este proyecto es ofrecer un medio que a partir de la información proporcionada por parte de los clientes sugiera estrategias y decisiones que ayuden a mejorar el negocio y la experiencia de los consumidores.
 
 ## Modelado
 Utilizando las reseñas que los clientes interesados dejen con puntuación genérica (de 0 a 5 estrellas) y con un comentario se pueden sacar conclusiones de sus comentarios examinando y buscando palabras clave utilizando heurísticas de procesamiento de lenguaje natural. Con la información extraída de las reseñas se puede realizar un procesamiento que nos diga los aspectos negativos y positivos del restaurante que utilice esta plataforma, pudiendo así ofrecer estrategias de mejora.
@@ -39,7 +39,7 @@ Más en profundidad:
 * `invoke install-no-dev`: Instala solo las dependencias que **no** sean de desarrollador.
 * `invoke test`: Lanza a ejecutar los test.
 
-Para una información más concisa sobre alguna tarea concreta ejecutar `inv[oke] --help <task>` 
+Para una información más concisa sobre alguna tarea concreta ejecutar `inv[oke] --help <task>`
 
 ### Test
 
@@ -84,6 +84,6 @@ Este contenedor y las distintas imágenes están continuamente sincronizados con
 A partir de las distintas imágenes creadas y subidas a DockerHub, conviene integrar la ejecución de los test en las distintas versiones de Python con cada subida a github. Para ello, se han configurado varios **sistemas de integración continua**. Concretamente:
 
 * Se ha hecho uso de [**Circle CI**](https://circleci.com/) como sistema de CI que ejecuta en paralelo los tests para las distintas versiones de Python, empleando las imágenes subidas a DockerHub para cada versión.
-* Se ha hecho uso de [**Github Actions**](https://github.com/features/actions) como sistema de CI que ejecuta los tests empleando la versión por defecto. 
+* Se ha hecho uso de [**Github Actions**](https://github.com/features/actions) como sistema de CI que ejecuta los tests empleando la versión por defecto.
 
 Por tanto, cada vez que se hace un push a este repositorio se ejecutan los test un total de siete veces con seis contenedores base distintos. Pudiendo estar alerta y acorralar rápidamente cualquier fallo en los tests.
