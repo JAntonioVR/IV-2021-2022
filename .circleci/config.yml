@@ -8,7 +8,6 @@ jobs:
     parameters:
       python-version:
         type: string
-        default: "3.8-slim"
     docker:
       - image: jantoniovr/iv-2021-2022:<< parameters.python-version >>
     steps:
@@ -16,10 +15,10 @@ jobs:
       - run: invoke test
       
 workflows:
-  sample: 
+  ejecuta_test: 
     jobs:
       - test:
           matrix:
             parameters:
-              python-version: ['3.10-slim', '3.9-slim', '3.8-slim', '3.10', '3.9', '3.8']
+              python-version: ['3.10-slim', '3.9-slim', '3.10', '3.9', '3.8']
 
