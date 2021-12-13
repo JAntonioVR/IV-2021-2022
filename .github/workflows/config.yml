@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.10-slim, 3.9-slim, 3.8-slim, '3.10', '3.9', '3.8']
+        python-version: [3.10-slim, 3.9-slim, 3.8-slim]
     steps:
       - uses: actions/checkout@v2
       - name: Docker Login
