@@ -5,10 +5,13 @@ import pytest
 # sys.path.append('./review_set')
 from review_set.resenia import Resenia
 from review_set.conjunto_resenias import ConjuntoResenias
+from configuration.configuracion import read_config_file
+
+config = read_config_file('configuration/config.ini')
 
 @pytest.fixture
 def dataset():
-    return "./data/Restaurant_Reviews.tsv"
+    return config['dataset']
 
 @pytest.fixture
 def conjunto_resenias(dataset):
