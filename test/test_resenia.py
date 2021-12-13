@@ -7,6 +7,9 @@ from review_set.resenia import Resenia
 from review_set.conjunto_resenias import ConjuntoResenias
 from configuration.configuracion import read_config_file
 
+def test_validacion_configparser():
+    read_config_file('configuration/config.ini')
+    
 config = read_config_file('configuration/config.ini')
 
 @pytest.fixture
