@@ -1,4 +1,5 @@
 # encoding: utf-8
+import logging
 import os
 import pytest
 # import sys
@@ -6,15 +7,22 @@ import pytest
 from review_set.resenia import Resenia
 from review_set.conjunto_resenias import ConjuntoResenias
 from configuration.configuracion import read_config_file
+from mylogging import levels
 
 def test_validacion_configparser():
     read_config_file('configuration/config.ini')
     
 config = read_config_file('configuration/config.ini')
 
+def test_logging_config():
+    logging_config = config['LOGGING']
+    if(logging_config.getboolean('log')):
+        assert(logging_config['output'] != None and logging_config['output'] != '' )
+        assert logging_config['level'] in levels
+
 @pytest.fixture
 def dataset():
-    return config['dataset']
+    return config['DATA']['dataset']
 
 @pytest.fixture
 def conjunto_resenias(dataset):
