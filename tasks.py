@@ -74,11 +74,14 @@ def check(c):
 
 # ─── TEST ───────────────────────────────────────────────────────────────────────
 @task
-def test(c, file='logs/tests.log', level='WARNING'):
+def test(c, file=None, level='WARNING'):
     '''
     Ejecuta los test usando `pytest`
     '''
-    c.run("pytest --log-file=" + file + " --log-file-level=" + level)
+    if file != None:
+        c.run("pytest --log-file=" + file + " --log-file-level=" + level)
+    else:
+        c.run("pytest")
 
 
 # ─── EJECUTA CONTENEDOR DOCKER ──────────────────────────────────────────────────
