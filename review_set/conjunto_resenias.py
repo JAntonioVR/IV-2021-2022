@@ -5,6 +5,7 @@ from typing import List
 
 from review_set.resenia import Resenia
 import csv
+import logging
 
 @dataclass
 class ConjuntoResenias:
@@ -32,8 +33,10 @@ class ConjuntoResenias:
                     for row in spamreader:
                         current_review = Resenia(row[0], row[3], int(row[2]), None)
                         self.resenias.append(current_review)
-                except UnicodeDecodeError:
-                    print("Error: No se ha podido abrir el fichero " + dataset)
+                except:
+                    logging.error("No se ha podido abrir el fichero " + dataset)
+        else:
+            logging.info("Se ha creado un conjunto de reseñas vacío")
             
     def buscar_resenias_por_local(self, local_id : str):
         ''' Método que devuelve todas las reseñas de un local dado.
@@ -45,6 +48,8 @@ class ConjuntoResenias:
         for resenia in self.resenias:
             if(resenia.local_id == local_id):
                 result.append(resenia)
+        if len(result) == 0:
+            logging.info("No se han encontrado reseñas de " + local_id)
         conjunto = ConjuntoResenias()
         conjunto.resenias = result
         return conjunto
@@ -56,9 +61,13 @@ class ConjuntoResenias:
         Argumentos:
         arg1 (int): Índice de la reseña que se busca
         '''
-        return self.resenias[index]
+        try:
+            resenia = self.resenias[index]
+        except:
+            logging.error("No existe en el conjunto una reseña con índide " + str(index))
+        return resenia
 
     def numero_resenias(self):
-        '''Método que devuelve el número de reseñas del conjunto
+        ''' Método que devuelve el número de reseñas del conjunto
         '''
         return len(self.resenias)
