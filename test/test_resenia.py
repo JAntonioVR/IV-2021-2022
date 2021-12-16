@@ -12,11 +12,18 @@ def configuracion():
     return Configuracion()
 
 def test_logging_file(configuracion):
+    '''
+    Comprueba que en caso de especificarse un archivo de logging su ruta no es una cadena
+    vacía.
+    '''
     logging_file = configuracion.get_logging_file()
     if(logging_file):
         assert(len(logging_file) > 0)
 
 def test_logging_level(configuracion):
+    '''
+    Comprueba que el nivel de configuración es una de las constantes predefinidas.
+    '''
     assert(configuracion.get_logging_level() in levels)
 
 @pytest.fixture
