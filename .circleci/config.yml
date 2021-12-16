@@ -1,31 +1,24 @@
 version: 2.1
-# See: https://circleci.com/docs/2.0/orb-intro/
-# orbs:
-  # The python orb contains a set of prepackaged CircleCI configuration you can use repeatedly in your configuration files
-  # Orb commands and jobs help you with common scripting around a language/tool
-  # so you dont have to copy and paste it everywhere.
-  # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/python
-  # python: circleci/python@1.2
+orbs:
+  python: circleci/python@1.2
 
 jobs:
+  # Testeado del código con las distintas versiones de Python
   test:
-    machine: true
+    parameters:
+      python-version:
+        type: string
+    docker:
+      - image: jantoniovr/iv-2021-2022:<< parameters.python-version >>
     steps:
-      # - checkout
-      # - docker/check:
-      #    docker-username: DOCKERHUB_USERNAME  # DOCKER_LOGIN is the default value, if it exists, it automatically would be used.
-      #   docker-password: DOCKERHUB_PASSWORD  # DOCKER_PASSWORD is the default value
-      # - docker/pull:
-      #    images: 'jantoniovr/iv-2021-2022'
-      # - run:
-      #   command: docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022
-      - run: echo OK
+      - checkout
+      - run: invoke test
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
+  ejecuta_test: 
     jobs:
-      - test
+      - test:
+          matrix:
+            parameters:
+              python-version: ['3.10-slim', '3.9-slim']
+

@@ -83,10 +83,10 @@ def test(c):
 
 # ─── EJECUTA CONTENEDOR DOCKER ──────────────────────────────────────────────────
 @task
-def ejecuta_docker(c):
+def ejecuta_docker(c, version):
     '''
     Ejecuta el contenedor de Docker para pasar los test
     '''
-    c.run("docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022")
+    c.run("docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022:" + str(version))
 
 # ────────────────────────────────────────────────────────────────────────────────
