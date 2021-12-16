@@ -4,23 +4,24 @@ import os
 import pytest
 from review_set.resenia import Resenia
 from review_set.conjunto_resenias import ConjuntoResenias
-from configuration.configuracion import read_config_file
+from configuracion import Configuracion
 from mylogging import levels
 
-def test_validacion_configparser():
-    read_config_file('configuration/config.ini')
-    
-config = read_config_file('configuration/config.ini')
+@pytest.fixture
+def configuracion():
+    return Configuracion()
 
-def test_logging_config():
-    logging_config = config['LOGGING']
-    if(logging_config.getboolean('log') and 'output' in logging_config):
-        assert(logging_config['output'] != None and logging_config['output'] != '' )
-        assert logging_config['level'] in levels
+def test_logging_file(configuracion):
+    logging_file = configuracion.get_logging_file()
+    if(logging_file):
+        assert(len(logging_file) > 0)
+
+def test_logging_level(configuracion):
+    assert(configuracion.get_logging_level() in levels)
 
 @pytest.fixture
-def dataset():
-    return config['DATA']['dataset']
+def dataset(configuracion):
+    return configuracion.get_dataset()
 
 @pytest.fixture
 def conjunto_resenias(dataset):
