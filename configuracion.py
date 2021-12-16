@@ -12,6 +12,8 @@ class Configuracion:
         
         if os.getenv('LOGGING_FILE'):
             self.logging_file = os.getenv('LOGGING_FILE')
+        else:
+            self.logging_file = None
 
         if os.getenv('LOGGING_LEVEL'):
             self.logging_level = os.getenv('LOGGING_LEVEL')

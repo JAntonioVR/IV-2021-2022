@@ -1,4 +1,5 @@
 import logging
+from configuracion import Configuracion
 
 levels = {
     'DEBUG': logging.DEBUG,
@@ -8,12 +9,31 @@ levels = {
     'CRITICAL': logging.CRITICAL
 }
 
-'''
-# FIXME ya no existe read_config_file
-def init_logging():
-    config = read_config_file('configuration/config.ini')['LOGGING']
-    if 'output' in config:
-        logging.basicConfig(filename=config['output'], level=levels[config['level']])
-    else:
-        logging.basicConfig(level=levels[config['level']])
-'''
+class MyLogger:
+    def __init__(self):
+        configuracion = Configuracion()
+        self.file = configuracion.get_logging_file()
+        self.level = configuracion.get_logging_level()
+        format = "%(levelname)s :  %(asctime)s - %(message)s"   # FIXME Parametrizo el formato???
+
+        logging.basicConfig(filename = self.file,
+                            filemode = "w",
+                            format = format, 
+                            level = self.level)
+        
+        self.logger = logging.getLogger()
+
+    def debug(self, msg):
+        self.logger.debug(msg)
+    
+    def info(self, msg):
+        self.logger.debug(msg)
+    
+    def warning(self, msg):
+        self.logger.warning(msg)
+    
+    def error(self, msg):
+        self.logger.error(msg)
+    
+    def critical(self, msg):
+        self.logger.critical(msg)
