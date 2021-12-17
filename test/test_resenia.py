@@ -26,11 +26,11 @@ def test_logging_level(configuracion):
     ''
     assert(configuracion.get_logging_level() in levels)
 
-
+'''
 @pytest.fixture
 def dataset(configuracion):
     return configuracion.get_dataset()
-'''
+
 @pytest.fixture
 def conjunto_resenias(dataset):
     return ConjuntoResenias(dataset)
