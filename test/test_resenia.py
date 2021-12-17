@@ -1,5 +1,4 @@
 # encoding: utf-8
-import logging
 import os
 import pytest
 from review_set.resenia import Resenia
@@ -40,7 +39,6 @@ def test_constructor_conjunto_resenias(dataset):
     sino un objeto de la clase ConjuntoResenias y que no hay errores en la carga del
     conjunto de datos.
     '''
-    logging.debug("Testeando constructor de ConjuntoResenia...")
     test_dataset_name(dataset)
     review_set = ConjuntoResenias(dataset)
     assert(review_set != None and isinstance(review_set, ConjuntoResenias) and review_set.numero_resenias() >= 0)
@@ -51,7 +49,6 @@ def test_constructor_conjunto_resenias_nulo():
     Comprueba que el constructor de la clase ConjuntoResenia crea un conjunto vacío si
     no se especifica ningún dataset
     '''
-    logging.debug("Testeando conjunto de reseñas vacío...")
     review_set = ConjuntoResenias()
     assert(review_set != None and isinstance(review_set, ConjuntoResenias) and review_set.numero_resenias() == 0)
 
@@ -59,14 +56,12 @@ def test_dataset_name(dataset):
     '''
     Comprueba que el fichero de datos existe.
     '''
-    logging.debug("Testeando nombre del dataset...")
     assert(os.path.isfile(dataset))
 
 def test_buscar_resenias_por_local(conjunto_resenias):
     '''
     Comprueba que no hay errores en la búsqueda por local de la clase ConjuntoResenias.
     '''
-    logging.debug("Testeando busqueda de reseñas por local...")
     local_id = "The Food Kingdom"
     resenias_local = conjunto_resenias.buscar_resenias_por_local(local_id)
     res = True
@@ -80,7 +75,6 @@ def test_instancias_conjunto(conjunto_resenias):
     Comprueba que todos los objetos que almacena 'conjunto_resenias' son de la clase
     Resenia.
     '''
-    logging.debug("Testeando tipado de las reseñas...")
     res = True
     for resenia in conjunto_resenias.resenias:
         res = res and isinstance(resenia, Resenia)
@@ -121,7 +115,6 @@ def test_conjunto_resenias(conjunto_resenias):
     '''
     Comprueba la integridad de cada una de las reseñas de conjunto_resenias
     '''
-    logging.debug("Testeando la integridad de las reseñas...")
     for i in range(conjunto_resenias.numero_resenias()):
         review = conjunto_resenias.buscar_resenia_por_indice(i)
         comprueba_resenia(review)

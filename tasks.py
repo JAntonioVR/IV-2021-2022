@@ -78,10 +78,7 @@ def test(c, file=None, level='WARNING'):
     '''
     Ejecuta los test usando `pytest`
     '''
-    if file != None:
-        c.run("pytest --log-file=" + file + " --log-file-level=" + level)
-    else:
-        c.run("pytest")
+    c.run("pytest")
 
 
 # ─── EJECUTA CONTENEDOR DOCKER ──────────────────────────────────────────────────
