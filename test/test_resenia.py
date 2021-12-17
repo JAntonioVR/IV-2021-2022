@@ -28,8 +28,9 @@ def test_logging_level(configuracion):
 
 '''
 @pytest.fixture
-def dataset(configuracion):
-    return configuracion.get_dataset()
+def dataset():
+    #return configuracion.get_dataset()
+    return 'data/Restaurant_Reviews.tsv'
 
 @pytest.fixture
 def conjunto_resenias(dataset):
