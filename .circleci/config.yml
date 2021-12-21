@@ -16,7 +16,7 @@ jobs:
       - run: export LOGGING_DIR=logs
       - run: export LOGGING_FILE=tests.log
       - run: export LOGGING_LEVEL=DEBUG
-      - run: export LOGGING_FORMAT='%(levelname)s : %(message)s'
+      - run: export LOGGING_FORMAT='%(levelname)s - %(message)s'
       - run: invoke test
 
 workflows:

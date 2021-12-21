@@ -34,7 +34,7 @@ def test_logging(configuracion):
     cr.buscar_resenia_por_indice(0)
     cr.buscar_resenia_por_indice(400)
     file = open(configuracion.get_logging_path(),'r')
-    assert( match(r"^((DEBUG|INFO|WARNING|ERROR|CRITICAL) : [\d\D]*){8}", file.read(), MULTILINE) != None )
+    assert( match(r"^((DEBUG|INFO|WARNING|ERROR|CRITICAL) - [\d\D]*){8}", file.read(), MULTILINE) != None )
 
 @pytest.fixture
 def dataset(configuracion):

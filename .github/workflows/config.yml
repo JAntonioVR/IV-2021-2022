@@ -45,6 +45,6 @@ jobs:
        -e LOGGING_DIR='logs' \
        -e LOGGING_FILE='tests.log' \
        -e LOGGING_LEVEL='DEBUG' \
-       -e LOGGING_FORMAT='%(levelname)s : %(message)s' \
+       -e LOGGING_FORMAT='%(levelname)s - %(message)s' \
        jantoniovr/iv-2021-2022:3.8-slim
   
