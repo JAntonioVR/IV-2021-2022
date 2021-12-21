@@ -74,7 +74,7 @@ def check(c):
 
 # ─── TEST ───────────────────────────────────────────────────────────────────────
 @task
-def test(c, file=None, level='WARNING'):
+def test(c):
     '''
     Ejecuta los test usando `pytest`
     '''
