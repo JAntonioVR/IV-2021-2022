@@ -32,10 +32,19 @@ jobs:
           readme: "./README.md"
           repository: jantoniovr/iv-2021-2022
   
+name: test-3.8-slim
+on: [push]
+jobs:
   # Ejecucion de los test con el contenedor base 3.8-slim
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: docker run -t -v `pwd`:/app/test jantoniovr/iv-2021-2022:3.8-slim
+      - run: docker run -t -v `pwd`:/app/test \
+       -e DATASET='data/Restaurant_Reviews.tsv' \
+       -e LOGGING_DIR='logs' \
+       -e LOGGING_FILE='tests.log' \
+       -e LOGGING_LEVEL='DEBUG' \
+       -e LOGGING_FORMAT='%(levelname)s : %(message)s' \
+       jantoniovr/iv-2021-2022:3.8-slim
   
