@@ -35,14 +35,12 @@ jobs:
   # Ejecucion de los test con el contenedor base 3.8-slim
   test:
     runs-on: ubuntu-latest
+    container: jantoniovr/iv-2021-2022:3.8-slim
     steps:
       - uses: actions/checkout@v2
-      - run: | 
-          docker run -t -v `pwd`:/app/test \
-            -e DATASET='data/Restaurant_Reviews.tsv' \
-            -e LOGGING_DIR='.' \
-            -e LOGGING_FILE='tests.log' \
-            -e LOGGING_LEVEL='DEBUG' \
-            -e LOGGING_FORMAT='%(levelname)s - %(message)s' \
-            jantoniovr/iv-2021-2022:3.8-slim
-  
+      - run: echo 'export DATASET=data/Restaurant_Reviews.tsv' >> $BASH_ENV
+      - run: echo 'export LOGGING_DIR=logs' >> $BASH_ENV
+      - run: echo 'export LOGGING_FILE=tests.log' >> $BASH_ENV
+      - run: echo 'export LOGGING_LEVEL=DEBUG' >> $BASH_ENV
+      - run: echo "export LOGGING_FORMAT='%(levelname)s - %(message)s'" >> $BASH_ENV
+      - run: invoke test
