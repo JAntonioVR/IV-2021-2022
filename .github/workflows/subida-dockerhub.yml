@@ -1,7 +1,7 @@
-# Construccion de las distintas versiones del contenedor y subida a DockerHub
 name: subida-dockerhub
 on: [push]
 jobs:
+  # Construccion de las distintas versiones del contenedor y subida a DockerHub
   construccion-subida-del-contenedor:
     runs-on: ubuntu-latest
     strategy:
@@ -19,10 +19,7 @@ jobs:
       - run: docker build --build-arg PYHTON_VERSION=${{ matrix.python-version }} -t jantoniovr/iv-2021-2022:${{ matrix.python-version }} .
       - run: docker push jantoniovr/iv-2021-2022:${{ matrix.python-version }}
 
-# Sincronizacion del README del repositorio de GitHub con el de DockerHub
-name: sincronizacion-readme
-on: [push]
-jobs:
+  # Sincronizacion del README del repositorio de GitHub con el de DockerHub
   sincronizacion_readme_dockerhub:
     runs-on: ubuntu-latest
     steps:
@@ -34,23 +31,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           readme: "./README.md"
           repository: jantoniovr/iv-2021-2022
-
-# Ejecucion de los test con el contenedor base 3.8-slim
-name: test-code
-on: [push]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Execute test
-        run: | 
-          docker run -t -v `pwd`:/app/test \
-            -e DATASET='data/Restaurant_Reviews.tsv' \
-            -e LOGGING_DIR='/tmp/' \
-            -e LOGGING_FILE='tests.log' \
-            -e LOGGING_LEVEL='DEBUG' \
-            -e LOGGING_FORMAT='%(levelname)s - %(message)s' \
-            jantoniovr/iv-2021-2022:3.8-slim
 
