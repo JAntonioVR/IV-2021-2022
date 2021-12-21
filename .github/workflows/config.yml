@@ -32,9 +32,9 @@ jobs:
           readme: "./README.md"
           repository: jantoniovr/iv-2021-2022
   
-name: test-3.8-slim
-on: [push]
-jobs:
+#name: test-3.8-slim
+#on: [push]
+#jobs:
   # Ejecucion de los test con el contenedor base 3.8-slim
   test:
     runs-on: ubuntu-latest
