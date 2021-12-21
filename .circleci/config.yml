@@ -12,11 +12,11 @@ jobs:
       - image: jantoniovr/iv-2021-2022:<< parameters.python-version >>
     steps:
       - checkout
-      - run: export DATASET=data/Restaurant_Reviews.tsv
-      - run: export LOGGING_DIR=logs
-      - run: export LOGGING_FILE=tests.log
-      - run: export LOGGING_LEVEL=DEBUG
-      - run: export LOGGING_FORMAT='%(levelname)s - %(message)s'
+      - run: echo 'export DATASET=data/Restaurant_Reviews.tsv' >> $BASH_ENV
+      - run: echo 'export LOGGING_DIR=logs' >> $BASH_ENV
+      - run: echo 'export LOGGING_FILE=tests.log' >> $BASH_ENV
+      - run: echo 'export LOGGING_LEVEL=DEBUG' >> $BASH_ENV
+      - run: echo "export LOGGING_FORMAT='%(levelname)s - %(message)s'" >> $BASH_ENV
       - run: invoke test
 
 workflows:
