@@ -40,7 +40,7 @@ jobs:
       - run: | 
           docker run -t -v `pwd`:/app/test \
             -e DATASET='data/Restaurant_Reviews.tsv' \
-            -e LOGGING_DIR='/app/test/logs' \
+            -e LOGGING_DIR='.' \
             -e LOGGING_FILE='tests.log' \
             -e LOGGING_LEVEL='DEBUG' \
             -e LOGGING_FORMAT='%(levelname)s - %(message)s' \
