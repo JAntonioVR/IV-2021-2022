@@ -1,0 +1,8 @@
+DEBUG : Creando de una instancia de ConjuntoResenia
+DEBUG : Buscando reseñas de Sweet and Tasty
+INFO : Se han encontrado 81 reseñas de Sweet and Tasty
+DEBUG : Buscando reseñas de AAAAAA
+INFO : No se han encontrado reseñas de AAAAAA
+DEBUG : Buscando la reseña de índice 0
+DEBUG : Buscando la reseña de índice 400
+ERROR : No se ha encontrado la reseña de índice 400
