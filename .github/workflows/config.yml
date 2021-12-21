@@ -35,7 +35,6 @@ jobs:
   # Ejecucion de los test con el contenedor base 3.8-slim
   test:
     runs-on: ubuntu-latest
-    container: jantoniovr/iv-2021-2022:3.8-slim
     steps:
       - uses: actions/checkout@v2
       - run: | 
@@ -46,4 +45,4 @@ jobs:
             -e LOGGING_LEVEL='DEBUG' \
             -e LOGGING_FORMAT='%(levelname)s - %(message)s' \
             jantoniovr/iv-2021-2022:3.8-slim
-  
+
