@@ -29,6 +29,10 @@ def test_logging_level(configuracion):
 
 def test_logging(configuracion):
     cr = ConjuntoReseniasFactory(configuracion.get_dataset())
+    print("DATASET: " + configuracion.get_dataset())
+    print("LOGGING FILE: " + configuracion.get_logging_file())
+    print("LOGGING PATH: " + configuracion.get_logging_path())
+    print("LOGGING LEVEL: " + configuracion.get_logging_level())
     cr.buscar_resenias_por_local('Sweet and Tasty')
     cr.buscar_resenias_por_local('AAAAAA')
     cr.buscar_resenia_por_indice(0)
