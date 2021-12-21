@@ -78,7 +78,7 @@ def test(c, file=None, level='WARNING'):
     '''
     Ejecuta los test usando `pytest`
     '''
-    c.run("pytest")
+    c.run("pytest -p no:logging")
 
 
 # ─── EJECUTA CONTENEDOR DOCKER ──────────────────────────────────────────────────
