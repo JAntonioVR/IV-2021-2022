@@ -28,13 +28,13 @@ class MyLogger:
     '''
     def __init__(self):
         configuracion = Configuracion()
-        self.file = configuracion.get_logging_file()
+        self.file = configuracion.get_logging_path()
         self.level = configuracion.get_logging_level()
-        format = "%(levelname)s :  %(asctime)s - %(message)s"   # FIXME Parametrizo el formato???
-
+        self.format = configuracion.get_logging_format()
+        
         logging.basicConfig(filename = self.file,
                             filemode = "w",
-                            format = format, 
+                            format = self.format, 
                             level = self.level)
         
         self.logger = logging.getLogger()
