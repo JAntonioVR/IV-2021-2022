@@ -13,21 +13,6 @@ jobs:
     steps:
       - checkout
       - run: 
-          name: Export DATASET
-          command: echo 'export DATASET=data/Restaurant_Reviews.tsv' >> $BASH_ENV
-      - run: 
-          name: Export LOGGING_DIR
-          command: echo 'export LOGGING_DIR=logs' >> $BASH_ENV
-      - run: 
-          name: Export LOGGING_FILE
-          command: echo 'export LOGGING_FILE=tests.log' >> $BASH_ENV
-      - run: 
-          name: Export LOGGING_LEVEL
-          command: echo 'export LOGGING_LEVEL=DEBUG' >> $BASH_ENV
-      - run: 
-          name: Export LOGGING_FORMAT
-          command: echo "export LOGGING_FORMAT='%(levelname)s - %(message)s'" >> $BASH_ENV
-      - run: 
           name: Execute test
           command: invoke test
 
