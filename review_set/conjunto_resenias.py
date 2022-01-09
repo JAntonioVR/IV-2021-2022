@@ -6,7 +6,7 @@ from typing import List
 from review_set.resenia import Resenia
 import csv
 import sys
-from mylogging import MyLogger
+from mylogger import MyLogger
 
 @dataclass
 class ConjuntoResenias:

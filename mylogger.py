@@ -2,8 +2,6 @@
 
 import logging
 from configuracion import Configuracion
-from review_set.conjunto_resenias import ConjuntoResenias
-import sys
 
 # ─── NIVELES DE LOGGING ─────────────────────────────────────────────────────────
 levels = {
@@ -31,7 +29,6 @@ class MyLogger:
         self.file = configuracion.get_logging_path()
         self.level = configuracion.get_logging_level()
         self.format = configuracion.get_logging_format()
-        
         logging.basicConfig(filename = self.file,
                             filemode = "w",
                             format = self.format, 
