@@ -1,6 +1,5 @@
 
 import os
-import logging
 
 class Configuracion:
     def __init__(self):
