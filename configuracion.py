@@ -1,11 +1,10 @@
-
+from dotenv import load_dotenv
 import os
 
 class Configuracion:
     def __init__(self):
-        if os.path.isfile('.env'):
-            from dotenv import load_dotenv
-            load_dotenv()
+
+        load_dotenv()
 
         if os.getenv('DATASET'):
             self.dataset = os.getenv('DATASET')
