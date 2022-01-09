@@ -5,3 +5,4 @@ automatizar:
     orden: invoke
 test: test/test_resenias.py
 CI: .circleci/config.yml
+configuracion: configuracion.py

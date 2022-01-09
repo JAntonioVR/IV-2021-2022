@@ -12,7 +12,9 @@ jobs:
       - image: jantoniovr/iv-2021-2022:<< parameters.python-version >>
     steps:
       - checkout
-      - run: invoke test
+      - run: 
+          name: Execute test
+          command: invoke test
 
 workflows:
   ejecuta_test: 

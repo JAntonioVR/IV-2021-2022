@@ -78,12 +78,12 @@ def test(c):
     '''
     Ejecuta los test usando `pytest`
     '''
-    c.run("pytest")
+    c.run("pytest -p no:logging")
 
 
 # ─── EJECUTA CONTENEDOR DOCKER ──────────────────────────────────────────────────
 @task
-def ejecuta_docker(c, version):
+def ejecuta_docker(c, version='3.8-slim'):
     '''
     Ejecuta el contenedor de Docker para pasar los test
     '''
