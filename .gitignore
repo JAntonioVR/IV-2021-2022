@@ -138,3 +138,6 @@ cython_debug/
 
 # Config file
 .env
+
+# Logs
+.log
