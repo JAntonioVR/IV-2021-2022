@@ -2,9 +2,9 @@
 import os
 import pytest
 from review_set.resenia import Resenia
-from review_set.conjunto_resenias import ConjuntoResenias
+from review_set.conjunto_resenias import ConjuntoResenias, ConjuntoReseniasFactory
 from configuracion import Configuracion
-from mylogging import levels, ConjuntoReseniasFactory
+from mylogging import levels
 from re import match, MULTILINE
 
 
